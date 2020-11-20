@@ -1,0 +1,47 @@
+# Physical Model Diagram
+# Looking for dependency among every table
+# It seems like a 3NF
+
+# Table 6 x 300,024 
+Employees as p # Table documentation comment 2
+------------
+emp_no INT PK # Principal Key FK >- titles.emp_no
+birth_date date  
+first_name string
+last_name string 
+gender string
+hire_date date 
+
+dept_emp
+----
+emp_no INT FK - Employees.emp_no # Principal Key FK >- salaries.emp_no
+dept_no VARCHAR(4) FK >- departments.dept_no
+from_date date  
+to_date date 
+
+dept_manager
+----
+emp_no INT FK - Employees.emp_no
+dept_no VARCHAR(4) FK >- departments.dept_no
+from_date date   
+to_date date 
+
+departments
+----
+dept_no VARCHAR(4) PK
+dept_name string
+
+# Table salaries
+salaries
+----
+emp_no INT FK - Employees.emp_no 
+salary INT
+from_date
+to_date
+
+# Table titles
+titles
+----
+emp_no INT FK - Employees.emp_no
+title string
+from
